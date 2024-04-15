@@ -1,28 +1,45 @@
-REMIX DEFAULT WORKSPACE
+## NFT Marketplace README
 
-Remix default workspace is present when:
-i. Remix loads for the very first time 
-ii. A new workspace is created with 'Default' template
-iii. There are no files existing in the File Explorer
+Welcome to the decentralized NFT Marketplace project on the Ethereum blockchain! This repository contains the smart contract code required to create a marketplace where users can securely and transparently buy and sell non-fungible tokens (NFTs).
 
-This workspace contains 3 directories:
+### About the Project
 
-1. 'contracts': Holds three contracts with increasing levels of complexity.
-2. 'scripts': Contains four typescript files to deploy a contract. It is explained below.
-3. 'tests': Contains one Solidity test file for 'Ballot' contract & one JS test file for 'Storage' contract.
+The main goal of this project is to provide a decentralized platform where creators and collectors of NFTs can interact without intermediaries, thus facilitating the buying and selling of unique digital assets. With this Marketplace, users can:
 
-SCRIPTS
+- **Create NFT Listings**: Users can create listings for their NFTs, specifying the NFT contract, token ID, and asking price.
+- **Purchase NFTs**: Other users can purchase listed NFTs using Ether (ETH), the native cryptocurrency of Ethereum.
+- **Commission Fee**: The contract includes a commission mechanism where a percentage of the transaction is collected as a fee for the service provided.
 
-The 'scripts' folder has four typescript files which help to deploy the 'Storage' contract using 'web3.js' and 'ethers.js' libraries.
+### Contracts
 
-For the deployment of any other contract, just update the contract's name from 'Storage' to the desired contract and provide constructor arguments accordingly 
-in the file `deploy_with_ethers.ts` or  `deploy_with_web3.ts`
+#### Marketplace.sol
 
-In the 'tests' folder there is a script containing Mocha-Chai unit tests for 'Storage' contract.
+`Marketplace.sol` is the smart contract responsible for managing the Marketplace functionality. This contract allows users to create and purchase NFT listings. Key features include:
 
-To run a script, right click on file name in the file explorer and click 'Run'. Remember, Solidity file must already be compiled.
-Output from script will appear in remix terminal.
+- **Listing Creation**: Users can create listings by specifying the NFT contract, token ID, and price.
+- **Listing Purchase**: Other users can purchase listings using Ether.
+- **Commission Mechanism**: The contract collects a fee on each transaction, with a percentage of it being sent to the designated account.
 
-Please note, require/import is supported in a limited manner for Remix supported modules.
-For now, modules supported by Remix are ethers, web3, swarmgw, chai, multihashes, remix and hardhat only for hardhat.ethers object/plugin.
-For unsupported modules, an error like this will be thrown: '<module_name> module require is not supported by Remix IDE' will be shown.
+#### NFT.sol
+
+`NFT.sol` is the smart contract for creating ERC721-compliant non-fungible tokens (NFTs). This contract allows users to create their own NFTs with associated metadata. Key features include:
+
+- **NFT Creation**: Users can create new NFTs with associated metadata URI.
+- **ERC721 Compliance**: Fully compliant with the ERC721 standard for NFTs.
+
+### Setup
+
+To deploy and interact with these contracts, you'll need an Ethereum development environment such as Truffle or Hardhat. You'll also need to install dependencies specified in the `package.json` file.
+
+### Deployment
+
+Deploy the contracts to an Ethereum network of your choice, such as the Ethereum mainnet, Rinkeby testnet, or a local development network.
+
+### Usage
+
+1. Deploy the `NFT` contract to create NFTs.
+2. Deploy the `Marketplace` contract to create a decentralized marketplace.
+3. Mint NFTs using the `NFT` contract.
+4. Create listings for these NFTs using the `Marketplace` contract.
+5. Purchase listings using Ether by calling the `purchaseItem` function on the `Marketplace` contract.
+
